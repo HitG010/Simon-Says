@@ -1,17 +1,26 @@
 let started = false;
-let h2 = document.querySelector("h2");
+let p1 = document.querySelector(".press");
 let gameSeq = [];
 let userSeq = [];
 let btnClass = ["red", "green", "yellow", "purple"];
 let btns = document.querySelectorAll(".btn");
 
-document.addEventListener("keypress", function () {
+// document.addEventListener("keypress", function () {
+//   if (started === false) {
+//     console.log("Game started");
+//     started = true;
+//     levelUp();
+//   }
+// });
+
+play_btn = document.querySelector(".play");
+play_btn.addEventListener("click", () => {
   if (started === false) {
     console.log("Game started");
     started = true;
     levelUp();
   }
-});
+})
 
 let level = 0;
 let userLvl = 0;
@@ -40,7 +49,7 @@ function btnFlash() {
 
 function levelUp() {
   level += 1;
-  h2.innerText = `Level ${level}`;
+  p1.innerText = `Level ${level}`;
 
   let rdmIdx = Math.floor(Math.random() * 4);
   let rdmClr = btnClass[rdmIdx];
@@ -62,9 +71,11 @@ function pressCheck() {
     userSeq = [];
   }
 }
+
 for (let btn of btns) {
   btn.addEventListener("click", btnPress);
 }
+
 function btnPress() {
   console.log("button clicked");
   let clr = this.getAttribute("id");
@@ -78,7 +89,7 @@ function btnPress() {
     userLvl++;
     pressCheck();
   } else {
-    h2.innerHTML = `Game Over <br> Your score was <b>${
+    p1.innerHTML = `Game Over <br> Your score was <b>${
       level - 1
     }<br>Press any key to restart`;
     let body = document.querySelector("body");
