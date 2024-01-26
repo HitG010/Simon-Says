@@ -4,14 +4,15 @@ let gameSeq = [];
 let userSeq = [];
 let btnClass = ["red", "green", "yellow", "purple"];
 let btns = document.querySelectorAll(".btn");
+let counter = document.querySelector(".streak1");
 
-// document.addEventListener("keypress", function () {
-//   if (started === false) {
-//     console.log("Game started");
-//     started = true;
-//     levelUp();
-//   }
-// });
+document.addEventListener("keypress", function () {
+  if (started === false) {
+    console.log("Game started");
+    started = true;
+    levelUp();
+  }
+});
 
 play_btn = document.querySelector(".play");
 play_btn.addEventListener("click", () => {
@@ -48,6 +49,7 @@ function btnFlash() {
 }
 
 function levelUp() {
+  counter.innerText = level;
   level += 1;
   p1.innerText = `Level ${level}`;
 
@@ -77,6 +79,7 @@ for (let btn of btns) {
 }
 
 function btnPress() {
+  if(started === false) return;
   console.log("button clicked");
   let clr = this.getAttribute("id");
   console.log(this);
@@ -91,7 +94,7 @@ function btnPress() {
   } else {
     p1.innerHTML = `Game Over <br> Your score was <b>${
       level - 1
-    }<br>Press any key to restart`;
+    }</b><br>Press any key to restart`;
     let body = document.querySelector("body");
     body.classList.add("incorrect");
     setTimeout(function () {
