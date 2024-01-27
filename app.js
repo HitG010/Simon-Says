@@ -2,7 +2,7 @@ let started = false;
 let p1 = document.querySelector(".press");
 let gameSeq = [];
 let userSeq = [];
-let btnClass = ["red", "green", "yellow", "purple"];
+let btnClass = ["yellow", "red", "green", "blue"];
 let btns = document.querySelectorAll(".btn");
 let counter = document.querySelector(".streak1");
 
