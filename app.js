@@ -19,6 +19,9 @@ play_btn.addEventListener("click", () => {
   if (started === false) {
     console.log("Game started");
     started = true;
+    
+    document.querySelector(".info-text").innerHTML = "Your Score"; 
+    document.querySelector(".play").innerHTML = "Play";
     levelUp();
   }
 })
@@ -92,9 +95,8 @@ function btnPress() {
     userLvl++;
     pressCheck();
   } else {
-    p1.innerHTML = `Game Over <br> Your score was <b>${
-      level - 1
-    }</b><br>Press any key to restart`;
+    document.querySelector(".info-text").innerHTML = "Game Over"; 
+    document.querySelector(".play").innerHTML = "Restart";
     let body = document.querySelector("body");
     body.classList.add("incorrect");
     setTimeout(function () {
